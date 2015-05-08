@@ -10,7 +10,8 @@ module.exports = {
 			fov : 40
 		},
 		renderer : {
-			useEffects : true
+			useEffects : false,
+      useVR: true
 		}
 	},
 	components : {

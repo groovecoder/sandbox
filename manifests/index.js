@@ -7,5 +7,5 @@ module.exports = {
 	uniformPositionalMatrices : require("./uniformPositionalMatrices"),
 	texturePositionalMatrices : require("./texturePositionalMatrices")
 	//"growth-1" : require("./growth-1"),
-	//vr : require("./vr"),
+	//vr : require("./vr")
 }

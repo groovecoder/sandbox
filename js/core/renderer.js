@@ -5,6 +5,7 @@ require('../shaders/ConvolutionShader');
 require('../shaders/FXAAShader');
 var chromaticAberrationShader = require('../postprocessing/chromaticAberration');
 var StereoEffect = require('../vendor/StereoEffect');
+var VREffect = require('../vendor/VREffect');
 
 //Singletons
 var _ratio = _.isNumber( window.devicePixelRatio ) ? window.devicePixelRatio : 1;
@@ -97,15 +98,18 @@ function handleNewPoem( properties, scene, cameraObj, poemEmitter ) {
 	var config = _.extend({
 		clearColor : 0x222222,
 		useEffects : false,
-		useVR : false
+		useStereo : false,
+    useVR: false
 	}, properties);
 	
 	_webGLRenderer.setClearColor( config.clearColor );
 	
-	if( config.useVR ) {
+	if( config.useStereo ) {
 		_renderer = new StereoEffect( _webGLRenderer );
 		_renderer.separation = 10;
 		// this.hideUI();
+  } else if ( config.useVR ) {
+    _renderer = new VREffect( _webGLRenderer );
 	} else {
 		_renderer = _webGLRenderer;
 		// this.showUI();
